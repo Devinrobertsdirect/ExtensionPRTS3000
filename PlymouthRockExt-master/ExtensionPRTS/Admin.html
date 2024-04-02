@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Console</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Admin Console - Travel Services Extension</h1>
+
+    <!-- Section for Adding New Reps -->
+    <section id="addRepSection">
+        <h2>Add New Representative</h2>
+        <form id="addRepForm">
+            <input type="text" id="repId" placeholder="Rep ID" required>
+            <input type="text" id="repName" placeholder="Rep Name" required>
+            <select id="repLevel">
+                <option value="">Select Level</option>
+                <option value="1">Level I</option>
+                <option value="2">Level II</option>
+                <option value="3">Level III</option>
+            </select>
+            <button type="submit" class="btn">Add Rep</button>
+        </form>
+    </section>
+
+    <!-- Section for Displaying Current Reps -->
+    <section id="currentRepsSection">
+        <h2>Current Representatives</h2>
+        <div id="repList">
+            <!-- Dynamically populated list of reps will appear here -->
+        </div>
+    </section>
+
+    <!-- Section for Managing Queue Status -->
+    <section id="queueStatusSection">
+        <h2>Queue Status</h2>
+        <div id="queueStatus">
+            <!-- Dynamically populated queue status will appear here -->
+        </div>
+    </section>
+
+    <!-- Additional Admin Functionalities as needed -->
+    <!-- Example: Sending Notifications to Reps -->
+    <section id="notificationsSection">
+        <h2>Send Notification to Reps</h2>
+        <form id="notificationForm">
+            <select id="notificationLevel">
+                <option value="">Select Level</option>
+                <option value="1">Level I</option>
+                <option value="2">Level II</option>
+                <option value="3">Level III</option>
+            </select>
+            <textarea id="notificationMessage" placeholder="Enter notification message"></textarea>
+            <button type="submit" class="btn">Send Notification</button>
+        </form>
+    </section>
+
+    <script src="admin.js"></script>
+</body>
+</html>
