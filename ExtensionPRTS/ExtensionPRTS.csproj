@@ -71,6 +71,8 @@
     <Content Include="Admin.html" />
     <Content Include="Admin.js" />
     <Content Include="Background.js" />
+    <Content Include="congratulations.html" />
+    <Content Include="congratulations.js" />
     <Content Include="Level1.html" />
     <Content Include="Level1.js" />
     <Content Include="Level2.html" />

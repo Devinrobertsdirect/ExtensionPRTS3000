@@ -52,3 +52,9 @@ button {
 .popup {
     cursor: move;
 }
+
+#timerContainer {
+    font-size: 20px;
+    margin-bottom: 20px;
+    /* Add more styles as needed */
+}
