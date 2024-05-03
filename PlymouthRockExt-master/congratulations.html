@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations</title>
+    <link rel="stylesheet" href="style.css"> <!-- Assuming you have a CSS file -->
+</head>
+<body>
+
+    <style>
+        #congratsImage {
+            width: 200px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* To center the image if needed */
+            margin: 0 auto; /* Center the image horizontally */
+            border-radius: 10px; /* Optional: rounded corners */
+        }
+        body {
+            min-width: 300px; /* Set your desired width */
+            min-height: 200px; /* Set your desired height */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .popup {
+            width: 300px; /* Adjust width as needed */
+            height: 200px; /* Adjust height as needed */
+            overflow: auto; /* Enable scrolling if content exceeds dimensions */
+            border: 2px solid #ccc;
+            padding: 20px;
+            background-color: #f9f9f9;
+            position: absolute;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+    </style>
+    <div id="congratulationsContainer">
+        <img src="bekah.png" alt="Congratulations" id="congratsImage">
+        <h1>Congratulations!</h1>
+        <p>You just made a sale, congrulations. Here is a Milkshake, you earned it!</p>
+    </div>
+    <script src="congratulations.js"></script>
+</body>
+</html>

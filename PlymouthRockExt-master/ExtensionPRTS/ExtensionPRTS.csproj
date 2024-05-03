@@ -70,7 +70,10 @@
     <Content Include="Admin.css" />
     <Content Include="Admin.html" />
     <Content Include="Admin.js" />
+    <Content Include="authMiddleware.js" />
     <Content Include="Background.js" />
+    <Content Include="fileStorage.js" />
+    <Content Include="index.js" />
     <Content Include="Level1.html" />
     <Content Include="Level1.js" />
     <Content Include="Level2.html" />
@@ -79,8 +82,16 @@
     <Content Include="Level3.js" />
     <Content Include="login.html" />
     <Content Include="login.js" />
+    <Content Include="memoryStorage.js" />
+    <Content Include="Moderator.html" />
+    <Content Include="Moderator.js" />
     <Content Include="Sheets.js" />
     <Content Include="style.css" />
+    <Content Include="authRoutes.js" />
+    <Content Include="userRoutes.js" />
+    <Content Include="Users.js" />
+    <Content Include="userSetup.js" />
+    <Content Include="userStorage.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +100,9 @@
   <ItemGroup>
     <Content Include="manifest.json" />
     <Content Include="Launch.json" />
+    <Content Include="package.json" />
     <None Include="packages.config" />
+    <Content Include="User.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

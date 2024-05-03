@@ -1,0 +1,26 @@
+{
+  [
+    {
+      "username": "user1",
+      "pin": "1234",
+      "role": "Level 1"
+    },
+    {
+      "username": "user2",
+      "pin": "2222",
+      "role": "Level 2"
+    },
+    {
+      "username": "user3",
+      "pin": "3333",
+      "role": "Level 3"
+    },
+    {
+      "username": "admin",
+      "pin": "4444",
+      "role": "Moderator"
+    }
+  ]
+
+
+}

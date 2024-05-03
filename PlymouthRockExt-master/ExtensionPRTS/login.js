@@ -1,22 +1,26 @@
-document.getElementById('loginBtn').addEventListener('click', () => {
-    const pin = document.getElementById('pinInput').value;
-    authenticatePIN(pin, isAuthenticated => {
-        if (isAuthenticated) {
-            // Redirect to Level 1 interface
-            window.location.href = 'level1.html';
-        } else {
-            alert('Invalid PIN. Please try again.');
-        }
-    });
-});
+// Function to authenticate the PIN, show user name, and redirect based on the role
+function authenticateAndRedirect(pin) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    console.log('Users:', users); // Log the list of users
+    const user = users.find(u => u.pin === pin);
+    console.log('Authenticating PIN:', pin, 'User Data:', user); // Log authentication info
 
-function authenticatePIN(pin, callback) {
-    // Example PIN for Level 1 reps
-    const LEVEL_1_PIN = '1234';  // You should choose a secure PIN
-
-    if (pin === LEVEL_1_PIN) {
-        callback(true);  // PIN is valid
+    if (user) {
+        alert(`Welcome, ${user.name}!`);
+        window.location.href = user.page; // Redirect to the corresponding page
     } else {
-        callback(false);  // Invalid PIN
+        console.error('Invalid PIN:', pin); // Log invalid PIN
+        alert('Invalid PIN. Please try again.');
     }
 }
+
+// Adding event listener to the login button
+document.addEventListener('DOMContentLoaded', () => {
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => {
+            const pin = document.getElementById('pinInput').value.trim(); // Retrieve the entered PIN
+            authenticateAndRedirect(pin); // Authenticate and redirect based on PIN
+        });
+    }
+});

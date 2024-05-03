@@ -3,9 +3,13 @@ document.getElementById('deadBtn').addEventListener('click', () => {
     backToLevel1(); // Assuming a function to return to Level 1
 });
 
-document.getElementById('completeBtn').addEventListener('click', () => {
-    // Logic for marking a call as complete
-    backToLevel1(); // Assuming a function to return to Level 1
+document.addEventListener('DOMContentLoaded', () => {
+    const completeBtn = document.getElementById('completeLevel3Btn');
+    if (completeBtn) {
+        completeBtn.addEventListener('click', () => {
+            window.location.href = 'congratulations.html'; // Redirect to the "Congratulations" screen
+        });
+    }
 });
 
 document.getElementById('followUpBtn').addEventListener('click', () => {

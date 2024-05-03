@@ -1,26 +1,56 @@
-// Function to authenticate the PIN
-function authenticatePIN(pin) {
-    // Example PIN for Level 1 reps
-    const LEVEL_1_PIN = '1234';  // You should choose a secure PIN
+async function handleLogin() {
+    const pinInput = document.getElementById('pinInput');
+    const pin = pinInput.value;
 
-    return pin === LEVEL_1_PIN;  // Returns true if PIN is valid, false otherwise
+    if (!pin) {
+        showError('Please enter your PIN');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pin })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            showError(errorData.message || 'Invalid PIN. Please try again.');
+            return;
+        }
+
+        const data = await response.json();
+        alert(`Welcome, ${data.username}`);
+
+        // Redirect based on role
+        switch (data.role) {
+            case 'Level 1':
+                window.location.href = 'level1.html';
+                break;
+            case 'Level 2':
+                window.location.href = 'level2.html';
+                break;
+            case 'Level 3':
+                window.location.href = 'level3.html';
+                break;
+            case 'Moderator':
+                window.location.href = 'moderator.html';
+                break;
+            default:
+                showError('Unknown role');
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        showError('An error occurred. Please try again.');
+    }
 }
 
-// Adding event listener to the login button
+// Event listener for login button
 document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('loginBtn');
-
-    // Ensure loginBtn exists before adding an event listener
     if (loginBtn) {
-        loginBtn.addEventListener('click', () => {
-            const pin = document.getElementById('pinInput').value; // Retrieve the entered PIN
-            if (authenticatePIN(pin)) {
-                // Redirect to Level 1 interface if the PIN is correct
-                window.location.href = 'level1.html';
-            } else {
-                // Notify the user if the PIN is incorrect
-                alert('Invalid PIN. Please try again.');
-            }
-        });
+        loginBtn.addEventListener('click', handleLogin);
     }
 });
+

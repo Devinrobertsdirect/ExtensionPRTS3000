@@ -6,37 +6,38 @@ let extensionState = {
     reps: {}
 };
 
-chrome.runtime.onInstalled.addListener(() => {
-    // Initialize storage and any necessary state
-    chrome.storage.local.set({ reps: {}, sessions: {}, queue: { level2: [], level3: [] } });
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    switch (message.action) {
+        case 'changeLevel':
+            handleChangeLevel(message.level);
+            break;
+        case 'addToQueue':
+            handleAddToQueue(message.repId);
+            break;
+        case 'removeFromQueue':
+            handleRemoveFromQueue(message.repId);
+            break;
+        case 'addRep':
+            handleAddRep(message.repDetails);
+            break;
+        // Add other cases as needed
+    }
+    sendResponse({ status: 'success' });
+    return true; // Indicates an asynchronous response
 });
-switch (message.action) {
-    case 'changeLevel':
-        handleChangeLevel(message.level);
-        break;
-    case 'addToQueue':
-        handleAddToQueue(message.repId);
-        break;
-    case 'removeFromQueue':
-        handleRemoveFromQueue(message.repId);
-        break;
-    case 'addRep':
-        handleAddRep(message.repDetails);
-        break;
-    // Add other cases as needed
-}
-sendResponse({ status: 'success' });
-return true; // Indicates an asynchronous response
+
 function authenticatePIN(pin, callback) {
     chrome.storage.local.get('reps', (data) => {
         const rep = Object.values(data.reps).find(rep => rep.pin === pin);
         if (rep) {
-            callback(true, rep); // Authenticated
+            callback(true); // PIN is valid
         } else {
-            callback(false, null); // Not Authenticated
+            callback(false); // Invalid PIN
         }
     });
-} function manageSession(rep, action) {
+}
+
+function manageSession(rep, action) {
     chrome.storage.local.get('sessions', (data) => {
         const sessions = data.sessions;
         if (action === 'login') {
