@@ -5,6 +5,28 @@ let extensionState = {
     queue: [],
     reps: {}
 };
+// Listen for messages
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        console.log("Received from content script:", request.greeting);
+        if (request.greeting === "hello") {
+            sendResponse({ farewell: "goodbye" });
+        }
+        return true; // Keep the message channel open for the response
+    });
+// Set user level
+function updateUserLevel(newLevel) {
+    chrome.storage.sync.set({ userLevel: newLevel }, function () {
+        console.log('User level updated to: ' + newLevel);
+    });
+}
+
+// Get user level
+function getUserLevel(callback) {
+    chrome.storage.sync.get(['userLevel'], function (result) {
+        callback(result.userLevel);
+    });
+}
 
 chrome.runtime.onInstalled.addListener(() => {
     // Initialize storage and any necessary state

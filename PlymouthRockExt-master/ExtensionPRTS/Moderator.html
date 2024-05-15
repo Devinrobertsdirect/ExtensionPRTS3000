@@ -5,7 +5,26 @@
     <title>Moderator Panel</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Add your custom styles here or use a separate CSS file */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -14,77 +33,73 @@
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
+            text-align: left;
         }
 
         th {
             background-color: #f2f2f2;
         }
 
-        form {4
+        form {
             margin-top: 20px;
         }
 
         input, select, button {
-            margin: 5px 0;
-        }
-
-        input[type="text"], input[type="email"], select {
-            width: 200px;
-            padding: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box; /* Includes padding and border in the element's total width and height */
         }
 
         button {
-            padding: 5px 10px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 3px;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #0056b3;
-        }
-
+            button:hover {
+                background-color: #0056b3;
+            }
     </style>
 </head>
 <body>
-    <h1>Moderator Panel</h1>
+    <div class="container">
+        <div class="nav-links">
+            <a href="log.html">View Login Logs</a> | <a href="moderator.html">User Management</a>
+        </div>
+        <h1>Moderator Control Panel</h1>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>PIN</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically generated -->
+            </tbody>
+        </table>
 
-    <table id="userTable">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>PIN</th>
-                <th>Role</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table rows will be dynamically generated -->
-        </tbody>
-    </table>
-
-    <!-- Ensure these IDs are exactly as specified -->
-    <form id="userForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" required><br>
-        <label for="pin">PIN:</label>
-        <input type="text" id="pin" required><br>
-        <label for="role">Role:</label>
-        <select id="role">
-            <option value="level1.html">Level 1</option>
-            <option value="level2.html">Level 2</option>
-            <option value="level3.html">Level 3</option>
-            <option value="moderator.html">Moderator</option>
-        </select><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" required><br>
-        <button type="button" id="addEditUserBtn">Add User</button>
-    </form>
-
+        <form id="userForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="pin" placeholder="PIN" required>
+            <select id="role">
+                <option value="level1.html">Level 1</option>
+                <option value="level2.html">Level 2</option>
+                <option value="level3.html">Level 3</option>
+                <option value="moderator.html">Moderator</option>
+            </select>
+            <input type="email" id="email" placeholder="Email" required>
+            <button type="button" id="addEditUserBtn">Add User</button>
+        </form>
+    </div>
 
     <script src="moderator.js"></script>
 </body>
 </html>
+

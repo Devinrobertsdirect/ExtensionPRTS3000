@@ -72,7 +72,9 @@
     <Content Include="Admin.js" />
     <Content Include="authMiddleware.js" />
     <Content Include="Background.js" />
+    <Content Include="content.js" />
     <Content Include="fileStorage.js" />
+    <Content Include="app.py" />
     <Content Include="index.js" />
     <Content Include="Level1.html" />
     <Content Include="Level1.js" />
@@ -85,6 +87,7 @@
     <Content Include="memoryStorage.js" />
     <Content Include="Moderator.html" />
     <Content Include="Moderator.js" />
+    <Content Include="popup.js" />
     <Content Include="Sheets.js" />
     <Content Include="style.css" />
     <Content Include="authRoutes.js" />

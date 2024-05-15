@@ -1,26 +1,38 @@
-// Function to authenticate the PIN, show user name, and redirect based on the role
-function authenticateAndRedirect(pin) {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    console.log('Users:', users); // Log the list of users
-    const user = users.find(u => u.pin === pin);
-    console.log('Authenticating PIN:', pin, 'User Data:', user); // Log authentication info
+document.getElementById('loginBtn').addEventListener('click', function (event) {
+    event.preventDefault();
 
-    if (user) {
-        alert(`Welcome, ${user.name}!`);
-        window.location.href = user.page; // Redirect to the corresponding page
-    } else {
-        console.error('Invalid PIN:', pin); // Log invalid PIN
-        alert('Invalid PIN. Please try again.');
+    // Get user input from the PIN input
+    const pin = document.getElementById('pinInput').value;
+
+    // Enhanced simple validation
+    if (pin.trim() === '') {
+        alert('Please enter your PIN');
+        return;
     }
-}
+    // Initialize default PINs if not already set
+    if (!localStorage.getItem('validPins')) {
+        const defaultPins = ['1001', '1002', '1003', '1004', '1005', '2001', '2002', '3001', '3002', '4001'];
+        localStorage.setItem('validPins', JSON.stringify(defaultPins));
+    }
 
-// Adding event listener to the login button
-document.addEventListener('DOMContentLoaded', () => {
-    const loginBtn = document.getElementById('loginBtn');
-    if (loginBtn) {
-        loginBtn.addEventListener('click', () => {
-            const pin = document.getElementById('pinInput').value.trim(); // Retrieve the entered PIN
-            authenticateAndRedirect(pin); // Authenticate and redirect based on PIN
-        });
+    // Determine redirection based on the first character of the PIN
+    const firstChar = pin.charAt(0); // Get the first character of the PIN
+
+    switch (firstChar) {
+        case '1': // PIN starts with 1
+            window.location.href = 'level1.html';
+            break;
+        case '2': // PIN starts with 2
+            window.location.href = 'level2.html';
+            break;
+        case '3': // PIN starts with 3
+            window.location.href = 'level3.html';
+            break;
+        case '4': // PIN starts with 4
+            window.location.href = 'moderator.html';
+            break;
+        default:
+            alert('Invalid PIN entered. PIN must start with 1, 2, 3, or 4.');
+            break;
     }
 });
